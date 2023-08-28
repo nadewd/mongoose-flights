@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 // optional shortcut to the mongoose.Schema class
 const Schema = mongoose.Schema;
 
+const destinationSchema = new Schema({
+    airport: {
+        type: String,
+        enum: ['LAX', 'ONT', 'OAK', 'SFO', 'JFK']
+    },
+    arrival: Date
+});
+
 const flightSchema = new Schema({
     airline: {
         type: String,
@@ -18,12 +26,8 @@ const flightSchema = new Schema({
         min: 50,
         max: 9999
     },
-    departs: { 
-        type: Date, 
-        default: function() {
-            return newDate().setFullYear(date.getFullYear() + 1);
-        }
-    }
+    departs: Date,
+    destinations: [destinationSchema]
 });
 
 // Compile the schema into a model and export it

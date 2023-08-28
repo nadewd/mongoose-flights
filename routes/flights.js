@@ -8,5 +8,7 @@ router.get('/new', flightsCtrl.new);
 router.post('/', flightsCtrl.create);
 // GET /flights
 router.get('/', flightsCtrl.index);
+// GET /flights/:id MUST be below new route
+router.get('/:id', flightsCtrl.show);
 
 module.exports = router;
