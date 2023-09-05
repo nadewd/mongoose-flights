@@ -33,7 +33,7 @@
       </tr>
     </thead>
     <tbody>
-      <% flight.destinations.forEach(function(destination) { %>
+      <br><% flight.destinations.forEach(function(destination) { %>
         <tr>
           <td><%= destination.airport %></td>
           <td><%= destination.arrival %></td>
@@ -41,7 +41,6 @@
       <% }); %>
     </tbody>
   </table>
-<% } else { %>
-  <h5>No Destinations Yet</h5>
 <% } %>
+
 <%- include('../partials/footer') %>

@@ -7,7 +7,7 @@ module.exports = {
 };
 
 async function newTicket(req, res) {
-    res.render('tickets/new', { title: 'Add Ticket', tickets });
+    res.render('tickets/new', { title: 'Add Ticket'});
 }
 
 async function create(req, res) {

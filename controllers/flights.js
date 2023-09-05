@@ -1,6 +1,5 @@
 const Flight = require('../models/flight');
 
-
 module.exports = {
     new: newFlight,
     create,
@@ -16,9 +15,14 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    const flight = await Flight.findById(req.params.id);
-    res.render('flights/show', { title: 'Flight Details', flight })
+    try { 
+        await Flight.findById(req.params.id, function(err, flight) {
+            Ticket.find({flight: flight._id}, function(err, tickets) {
+                res.render('flights/show', { title: 'Flight Details', flight, tickets });
+        })
+    }
 }
+};
 
 function newFlight(req, res) {
     // Render an error message if create action fails
